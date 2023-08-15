@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/tvCurrentlyPlaying"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Currently Playing:"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvName"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name: Unknown"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/tvCurrentlyPlaying"
+        app:layout_constraintBottom_toTopOf="@id/tvDuration"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="/ 00:00"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/tvName"
+        app:layout_constraintBottom_toTopOf="@id/seekBar"
+        app:layout_constraintStart_toEndOf="@id/tvCurrentPosition"
+        android:layout_marginStart="2dp"/>
+
+    <TextView
+        android:id="@+id/tvCurrentPosition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="At: 00:00"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/tvName"
+        app:layout_constraintBottom_toTopOf="@id/seekBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvDuration"
+        android:layout_marginStart="100dp"
+        />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvDuration"
+        app:layout_constraintBottom_toTopOf="@id/btnPlay"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnSelectFolder"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_baseline_folder_24"
+        app:layout_constraintBottom_toTopOf="@id/rvMusics"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnPrevious"
+        app:layout_constraintTop_toBottomOf="@id/seekBar"/>
+
+    <ImageButton
+        android:id="@+id/btnPrevious"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_baseline_skip_previous_24"
+        app:layout_constraintBottom_toTopOf="@id/rvMusics"
+        app:layout_constraintStart_toEndOf="@id/btnSelectFolder"
+        app:layout_constraintEnd_toStartOf="@id/btnStop"
+        app:layout_constraintTop_toBottomOf="@id/seekBar"/>
+
+    <ImageButton
+        android:id="@+id/btnStop"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_baseline_stop_24"
+        app:layout_constraintBottom_toTopOf="@id/rvMusics"
+        app:layout_constraintStart_toEndOf="@id/btnPrevious"
+        app:layout_constraintEnd_toEndOf="@id/btnPause"
+        app:layout_constraintTop_toBottomOf="@id/seekBar"/>
+
+    <ImageButton
+        android:id="@+id/btnPause"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_baseline_pause_24"
+        app:layout_constraintBottom_toTopOf="@id/rvMusics"
+        app:layout_constraintStart_toEndOf="@id/btnStop"
+        app:layout_constraintEnd_toStartOf="@id/btnPlay"
+        app:layout_constraintTop_toBottomOf="@id/seekBar"/>
+
+    <ImageButton
+        android:id="@+id/btnPlay"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_baseline_play_arrow_24"
+        app:layout_constraintBottom_toTopOf="@id/rvMusics"
+        app:layout_constraintStart_toEndOf="@id/btnPause"
+        app:layout_constraintEnd_toStartOf="@id/btnSkip"
+        app:layout_constraintTop_toBottomOf="@id/seekBar"/>
+
+    <ImageButton
+        android:id="@+id/btnSkip"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_baseline_skip_next_24"
+        app:layout_constraintBottom_toTopOf="@id/rvMusics"
+        app:layout_constraintStart_toEndOf="@id/btnPlay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/seekBar"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/light_grey"
+        android:id="@+id/view"
+        app:layout_constraintTop_toBottomOf="@id/btnPlay"
+        app:layout_constraintBottom_toTopOf="@id/rvMusics"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMusics"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        app:layout_constraintTop_toBottomOf="@id/view"
+        app:layout_constraintBottom_toTopOf="@id/tvDeveloped"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvDeveloped"
+        android:text="Developed by Tiago Castro - tiagomscastro@gmail.com @https://github.com/WikiCoding"
+        app:layout_constraintTop_toBottomOf="@id/rvMusics"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
